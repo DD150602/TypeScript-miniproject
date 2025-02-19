@@ -1,11 +1,9 @@
 import { Router } from 'express'
-import { getAllCoordinates } from '../services/coordenates'
+import CoordinatesController from '../controllers/coordinates'
 
 const router = Router()
-
-router.get('/', (_req, res) => {
-  res.json(getAllCoordinates())
-})
+const coordinatesController = new CoordinatesController()
+router.get('/', coordinatesController.getAllCoordinates)
 
 router.post('/', (_req, res) => {
   res.json({ message: 'hello world' })
